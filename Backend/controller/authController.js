@@ -1,3 +1,4 @@
+import "dotenv/config";
 import User from "../model/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -67,7 +68,7 @@ export const login = async (req, res) => {
                 userId: user._id,
                 role: user.role,
             },
-            "smartschoolsecret",
+            process.env.JWT_SECRET,
             {
                 expiresIn: "1d",
             }
